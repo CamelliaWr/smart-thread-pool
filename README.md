@@ -70,7 +70,7 @@ Smart ThreadPool 是一个可动态调节、可监控的线程池框架，支持
 @Service
 public class OrderService {
 
-    @SmartPool(name = "order-pool", corePoolSize = 4, maxPoolSize = 8)
+    @SmartPool(name = "order-pool", corePoolSize = 4, maxPoolSize = 8, queueCapacity = 100)
     private DynamicThreadPoolExecutor orderExecutor;
 
     public void processOrder(Runnable task) {
@@ -137,4 +137,19 @@ public class MyRejectedStrategy implements RejectedExecutionStrategy {
     }
 }
 ```
+
+## 注解使用方式
+
+### `@SmartPool` 注解参数说明
+
+| 参数 | 类型 | 说明 | 默认值 |
+|------|------|------|--------|
+| `name` | `String` | 线程池名称（必填） | — |
+| `corePoolSize` | `int` | 核心线程数 | 4 |
+| `maxPoolSize` | `int` | 最大线程数 | 8 |
+| `queueCapacity` | `int` | 队列容量 | 200 |
+| `keepAliveSeconds` | `int` | 空闲线程存活时间 | 60 |
+| `allowCoreThreadTimeout` | `boolean` | 核心线程是否超时 | false |
+
+
 

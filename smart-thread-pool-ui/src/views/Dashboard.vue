@@ -4,7 +4,6 @@
       <ThreadPoolCard :pool="pool" />
     </div>
     <ThreadPoolChart :pools="filteredPools" />
-    <ThreadPoolRealtimePanel :onSelectPool="handlePoolSelect" />
   </div>
 </template>
 
@@ -13,11 +12,11 @@ import { defineComponent, ref, onMounted, computed } from 'vue';
 import { fetchMetrics, PoolMetrics } from '../api/metrics';
 import ThreadPoolCard from '../components/ThreadPoolCard.vue';
 import ThreadPoolChart from '../components/ThreadPoolChart.vue';
-import ThreadPoolRealtimePanel from '../components/ThreadPoolRealtimePanel.vue';
+
 
 export default defineComponent({
   name: 'Dashboard',
-  components: { ThreadPoolCard, ThreadPoolChart, ThreadPoolRealtimePanel },
+  components: { ThreadPoolCard, ThreadPoolChart },
   setup() {
     const metrics = ref<PoolMetrics[]>([]);
     const selectedPool = ref<string | null>(null);
